@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "Starting speedtest endlessloop. Perform Speedtest every ${SLEEP_DURATION} and publish results to MQTT broker."
 
-echo "Initially waiting 8 minutes to get server started up"
-sleep 8m
+echo "Initially waiting ${SLEEP_DURATION} to get server started up"
+sleep ${SLEEP_DURATION}
 
 while true
 do
