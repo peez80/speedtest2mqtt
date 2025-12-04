@@ -1,8 +1,8 @@
 #!/bin/bash
-echo "Starting speedtest endlessloop. Perform Speedtest every ${SLEEP_DURATION} and publish results to MQTT broker."
+echo "Starting speedtest endlessloop. Perform Speedtest every ${SPEEDTEST_INTERVAL} and publish results to MQTT broker."
 
-echo "Initially waiting ${SLEEP_DURATION} to get server started up"
-sleep ${SLEEP_DURATION}
+echo "Initially waiting ${SPEEDTEST_INTERVAL} to get server started up"
+sleep ${SPEEDTEST_INTERVAL}
 
 while true
 do
@@ -26,8 +26,8 @@ do
     mosquitto_pub -h $MQTT_HOST -p $MQTT_PORT -u $MQTT_USER  -P "$MQTT_PASS" -t "$MQTT_TOPIC_DOWN" -m "$downloadMbit"
     mosquitto_pub -h $MQTT_HOST -p $MQTT_PORT -u $MQTT_USER  -P "$MQTT_PASS" -t "$MQTT_TOPIC_UP" -m "$uploadMbit"
 
-    echo "Now sleep ${SLEEP_DURATION} before next execution..."
-    sleep ${SLEEP_DURATION} 
+    echo "Now sleep ${SPEEDTEST_INTERVAL} before next execution..."
+    sleep ${SPEEDTEST_INTERVAL} 
     echo "repeat!"
 done
 
